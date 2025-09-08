@@ -36,7 +36,7 @@ export default function Contact() {
         <div className="flex items-center gap-3">
           <Github className="w-5 h-5 text-violet-400" />
           <a href="https://github.com/karthy24" target="_blank" className="hover:underline">
-            github.com/karthy24
+            karthy24
           </a>
         </div>
 
