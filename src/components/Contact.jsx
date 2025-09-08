@@ -29,7 +29,7 @@ export default function Contact() {
         <div className="flex items-center gap-3">
           <Linkedin className="w-5 h-5 text-violet-400" />
           <a href={profile.linkedin} target="_blank" className="hover:underline">
-            {profile.linkedin}
+            karthikeyan
           </a>
         </div>
 
