@@ -43,7 +43,7 @@ export default function About() {
                 </svg>
                 Let's Connect
               </a>
-              <a href={personal.resume} target="_blank" rel="noreferrer" className="btn-outline">
+              <a href={personal.resume} target="_blank" rel="noreferrer" download="Karthikeyan-N-Resume.pdf" className="btn-outline">
                 Download CV ↓
               </a>
             </div>

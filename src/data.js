@@ -10,7 +10,7 @@ export const personal = {
   location: 'Tamil Nadu, India',
   github: 'https://github.com/karthy24',
   linkedin: 'https://linkedin.com/in/',
-  resume: '#',                        // ← add resume link
+  resume: '/Karthikeyan-N-Resume.pdf',
 };
 
 export const skills = [
