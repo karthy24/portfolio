@@ -1,3 +1,4 @@
+import InteractiveBackground from './components/InteractiveBackground';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -10,10 +11,8 @@ import Footer from './components/Footer';
 export default function App() {
   return (
     <div className="relative min-h-screen">
-      {/* Background orbs */}
-      <div className="orb orb-1" />
-      <div className="orb orb-2" />
-      <div className="orb orb-3" />
+      {/* Interactive & Scroll-Responsive Animated Background */}
+      <InteractiveBackground />
 
       {/* Content */}
       <div className="relative z-10">

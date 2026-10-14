@@ -84,10 +84,9 @@ body::before {
   position: fixed;
   border-radius: 50%;
   filter: blur(120px);
-  opacity: 0.12;
+  opacity: 0.18;
   pointer-events: none;
   z-index: 0;
-  animation: float 8s ease-in-out infinite;
 }
 .orb-1 {
   width: 500px;

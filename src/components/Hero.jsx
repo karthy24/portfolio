@@ -6,15 +6,6 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 pt-24 pb-16 overflow-hidden"
     >
-      {/* Animated grid */}
-      <div
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage:
-            'linear-gradient(#6366f1 1px, transparent 1px), linear-gradient(to right, #6366f1 1px, transparent 1px)',
-          backgroundSize: '50px 50px',
-        }}
-      />
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         {/* Availability badge */}
