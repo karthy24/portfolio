@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import ElasticStringCanvas from './ElasticStringCanvas';
 import { personal } from '../data';
 
 const disciplines = [
@@ -24,9 +23,6 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex flex-col justify-between px-6 sm:px-12 md:px-16 pt-28 pb-12 overflow-hidden border-b border-white/5"
     >
-      {/* Interactive Elastic String across the middle */}
-      <ElasticStringCanvas />
-
       {/* Top Header Row of Hero */}
       <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pointer-events-none">
         {/* Monogram Initial */}
@@ -77,7 +73,7 @@ export default function Hero() {
         <div className="flex items-center gap-6 font-mono text-xs text-neutral-500">
           <span>01 / 05 SECTIONS</span>
           <span className="hidden sm:inline text-neutral-700">·</span>
-          <span className="hidden sm:inline">DRAG OR HOVER CURSOR ON LINE TO INTERACT</span>
+          <span className="hidden sm:inline">ACTIVE TERMINAL // HOVER TO ILLUMINATE CODE BUS</span>
         </div>
 
         <div className="flex items-center gap-4">
