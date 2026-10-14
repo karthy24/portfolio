@@ -2,55 +2,59 @@ import { skills } from '../data';
 
 export default function Skills() {
   return (
-    <section id="skills" className="relative py-24 px-4 sm:px-6 bg-dark-900/40">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <p className="text-primary-400 font-mono text-sm mb-3 tracking-widest uppercase">What I Know</p>
-          <h2 className="section-heading">Technical Skills</h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-primary-500 to-cyan-400 rounded-full mx-auto mb-4" />
-          <p className="section-sub mx-auto text-center">
-            A diverse skill set spanning frontend, backend, data analytics, and digital marketing.
+    <section id="skills" className="relative py-28 px-6 sm:px-12 md:px-16 border-b border-white/5">
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/10 mb-16">
+          <div>
+            <p className="font-mono text-xs text-primary-400 uppercase tracking-[0.25em] mb-3">04 / Capabilities</p>
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white">
+              Technical Stack &amp; Domain
+            </h2>
+          </div>
+          <p className="text-neutral-400 max-w-md text-sm sm:text-base font-light leading-relaxed">
+            Multidisciplinary competencies combining modern full-stack development, database query optimization, data analytics, and digital marketing infrastructure.
           </p>
         </div>
 
-        {/* Skill categories */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skills.map((category) => (
-            <div key={category.category} className={`glass-card p-6 border ${category.border}`}>
-              {/* Category header */}
-              <div className="flex items-center gap-3 mb-5">
-                <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${category.color} flex items-center justify-center text-xl shadow-lg`}>
-                  {category.icon}
+        {/* Skills Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {skills.map((category, idx) => (
+            <div
+              key={category.category}
+              className="p-8 border border-white/10 bg-white/[0.015] hover:border-white/25 hover:bg-white/[0.03] transition-all duration-300 flex flex-col justify-between"
+            >
+              <div>
+                {/* Number & Category Name */}
+                <div className="flex items-center justify-between font-mono text-xs text-neutral-500 mb-6">
+                  <span>0{idx + 1} // DOMAIN</span>
+                  <span className="text-lg">{category.icon}</span>
                 </div>
-                <h3 className="text-white font-semibold text-lg">{category.category}</h3>
+
+                <h3 className="text-xl font-bold text-white uppercase tracking-tight mb-6">
+                  {category.category}
+                </h3>
+
+                {/* Skill Badges */}
+                <div className="flex flex-wrap gap-2">
+                  {category.items.map((item) => (
+                    <span
+                      key={item}
+                      className="px-3 py-1.5 font-mono text-xs text-neutral-300 bg-white/5 border border-white/10 hover:border-primary-400/50 hover:text-white transition-colors"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
               </div>
 
-              {/* Skills */}
-              <div className="flex flex-wrap gap-2">
-                {category.items.map((skill) => (
-                  <span
-                    key={skill}
-                    className={`skill-badge bg-white/5 border-white/10 text-neutral-300 hover:text-white hover:bg-white/10 cursor-default`}
-                  >
-                    {skill}
-                  </span>
-                ))}
+              {/* Bottom Metric */}
+              <div className="mt-8 pt-4 border-t border-white/5 font-mono text-[11px] text-neutral-500 flex justify-between">
+                <span>SKILLS COUNT: {category.items.length}</span>
+                <span className="text-primary-400">VERIFIED</span>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Bottom marquee */}
-        <div className="mt-16 overflow-hidden">
-          <p className="text-center text-neutral-600 text-sm mb-6">Technologies I work with</p>
-          <div className="flex gap-6 animate-pulse-slow flex-wrap justify-center">
-            {['React', 'Node.js', 'JavaScript', 'MySQL', 'Power BI', 'Python', 'Bootstrap', 'SQL', 'Excel', 'SEO', 'Google Ads', 'Express.js'].map((tech) => (
-              <span key={tech} className="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-neutral-400 text-sm font-mono">
-                {tech}
-              </span>
-            ))}
-          </div>
         </div>
       </div>
     </section>

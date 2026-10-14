@@ -1,75 +1,103 @@
 import { personal } from '../data';
 
-const stats = [
-  { label: 'Projects Built', value: '3+' },
-  { label: 'Internships', value: '2' },
-  { label: 'Tech Skills', value: '20+' },
-  { label: 'Months Experience', value: '9+' },
+const metrics = [
+  { label: 'Production Systems', value: '3+', desc: 'MERN Stack & AI Vision' },
+  { label: 'Internships', value: '02', desc: 'BluonTech & Vibhathi Labs' },
+  { label: 'Technical Domains', value: '04', desc: 'Dev · SQL · BI · Marketing' },
+  { label: 'Verified Skills', value: '20+', desc: 'Modern Tools & Stacks' },
 ];
 
 export default function About() {
   return (
-    <section id="about" className="relative py-24 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Text side */}
+    <section id="about" className="relative py-28 px-6 sm:px-12 md:px-16 border-b border-white/5">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/10 mb-16">
           <div>
-            <p className="text-primary-400 font-mono text-sm mb-3 tracking-widest uppercase">About Me</p>
-            <h2 className="section-heading">Passionate Developer &amp;<br/>Digital Marketer</h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-primary-500 to-cyan-400 rounded-full mb-8" />
+            <p className="font-mono text-xs text-primary-400 uppercase tracking-[0.25em] mb-3">05 / Profile</p>
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white">
+              About &amp; Perspective
+            </h2>
+          </div>
+          <div className="font-mono text-xs text-neutral-500">
+            <span>LOCATION: {personal.location.toUpperCase()}</span>
+          </div>
+        </div>
 
-            <div className="space-y-4 text-neutral-300 leading-relaxed">
-              <p>
-                I'm <span className="text-white font-semibold">Karthikeyan N</span>, a web developer and full-stack engineer
-                based in <span className="text-primary-300">Tamil Nadu, India</span>. I specialize in building responsive,
-                user-friendly web applications with a strong eye for design and performance.
+        {/* Narrative & Metrics */}
+        <div className="grid lg:grid-cols-12 gap-12 items-start">
+          {/* Left Column: Indented Editorial Narrative */}
+          <div className="lg:col-span-7 space-y-6">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white uppercase tracking-tight leading-snug">
+              Bridging clean code, relational databases, and data-driven insight.
+            </h3>
+
+            <div className="space-y-4 text-neutral-300 font-light leading-relaxed text-base sm:text-lg">
+              <p className="indent-8">
+                I'm <span className="text-white font-medium">Karthikeyan N</span>, a software developer and technical analyst
+                passionate about creating responsive, high-performance web applications backed by solid database architectures
+                and actionable business intelligence.
               </p>
               <p>
-                With internship experience at <span className="text-white font-medium">BluonTech</span> and{' '}
-                <span className="text-white font-medium">Vibhathi Labs</span>, I've worked on real-world web and database
-                projects — ranging from responsive front-end interfaces to SQL database management.
+                Through my hands-on internships at <span className="text-white font-medium">BluonTech</span> (Web Development) and{' '}
+                <span className="text-white font-medium">Vibhathi Labs</span> (SQL &amp; Oracle Apex), I've engineered responsive web interfaces,
+                optimized complex database queries, and implemented full-cycle front-end solutions.
               </p>
               <p>
-                Beyond coding, I have a strong interest in <span className="text-cyan-300">Data Analytics</span> (Power BI,
-                Advanced Excel) and <span className="text-amber-300">Digital Marketing</span> (SEO, Google Ads, Google Analytics),
-                making me a well-rounded professional who understands both technical and business perspectives.
+                My multidisciplinary approach integrates <span className="text-cyan-300">Data Analytics</span> (Power BI, Advanced Excel)
+                with <span className="text-primary-300">Digital Marketing</span> (SEO, Google Ads, Google Analytics, Tag Manager),
+                giving me a unique advantage to engineer digital products that perform technically while driving measurable growth.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 mt-8">
-              <a href={`mailto:${personal.email}`} className="btn-primary">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                Let's Connect
+            <div className="pt-6 flex flex-wrap gap-4">
+              <a
+                href={personal.resume}
+                target="_blank"
+                rel="noreferrer"
+                download="Karthikeyan-N-Resume.pdf"
+                className="px-6 py-3 bg-white text-dark-950 hover:bg-neutral-200 font-mono text-xs font-bold uppercase tracking-wider transition-colors inline-flex items-center gap-2"
+              >
+                <span>Download Resume (PDF)</span>
+                <span>↓</span>
               </a>
-              <a href={personal.resume} target="_blank" rel="noreferrer" download="Karthikeyan-N-Resume.pdf" className="btn-outline">
-                Download CV ↓
-              </a>
+              <button
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-6 py-3 border border-white/20 hover:border-white text-white font-mono text-xs uppercase tracking-wider transition-colors"
+              >
+                Let's Discuss Projects ↗
+              </button>
             </div>
           </div>
 
-          {/* Stats side */}
-          <div className="grid grid-cols-2 gap-4">
-            {stats.map((stat) => (
+          {/* Right Column: Metric Matrix */}
+          <div className="lg:col-span-5 grid grid-cols-2 gap-4">
+            {metrics.map((m) => (
               <div
-                key={stat.label}
-                className="glass-card p-6 text-center"
+                key={m.label}
+                className="p-6 border border-white/10 bg-white/[0.015] flex flex-col justify-between"
               >
-                <p className="text-4xl font-extrabold gradient-text mb-2">{stat.value}</p>
-                <p className="text-neutral-400 text-sm">{stat.label}</p>
+                <p className="font-mono text-4xl sm:text-5xl font-bold text-white mb-3 tracking-tight">
+                  {m.value}
+                </p>
+                <div>
+                  <p className="text-xs uppercase font-mono font-semibold text-neutral-300 tracking-wider">
+                    {m.label}
+                  </p>
+                  <p className="text-[11px] font-mono text-neutral-500 mt-1">
+                    {m.desc}
+                  </p>
+                </div>
               </div>
             ))}
 
-            {/* Info card */}
-            <div className="glass-card p-6 col-span-2 flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-primary-600/20 border border-primary-500/30 flex items-center justify-center text-2xl flex-shrink-0">
-                📍
-              </div>
+            {/* Quick Status Box */}
+            <div className="col-span-2 p-6 border border-primary-500/20 bg-primary-500/5 flex items-center justify-between">
               <div>
-                <p className="text-white font-medium">{personal.location}</p>
-                <p className="text-neutral-400 text-sm">Available for remote &amp; on-site roles</p>
+                <p className="font-mono text-xs text-primary-300 uppercase tracking-widest font-semibold">Ready for Deployment</p>
+                <p className="text-neutral-400 text-xs mt-0.5">Available for full-time, contract, or freelance technical roles.</p>
               </div>
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping flex-shrink-0" />
             </div>
           </div>
         </div>

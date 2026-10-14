@@ -1,81 +1,87 @@
+import { useState } from 'react';
 import { experience } from '../data';
 
 export default function Experience() {
+  const [expandedIndex, setExpandedIndex] = useState(0);
+
   return (
-    <section id="experience" className="relative py-24 px-4 sm:px-6 bg-dark-900/40">
-      <div className="max-w-4xl mx-auto">
+    <section id="experience" className="relative py-28 px-6 sm:px-12 md:px-16 border-b border-white/5">
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <p className="text-primary-400 font-mono text-sm mb-3 tracking-widest uppercase">Work History</p>
-          <h2 className="section-heading">Experience</h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-primary-500 to-cyan-400 rounded-full mx-auto mb-4" />
-          <p className="section-sub mx-auto text-center">
-            Hands-on internship experience in web development and database management.
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/10 mb-16">
+          <div>
+            <p className="font-mono text-xs text-primary-400 uppercase tracking-[0.25em] mb-3">03 / Background</p>
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white">
+              Work &amp; Experience
+            </h2>
+          </div>
+          <p className="text-neutral-400 max-w-md text-sm sm:text-base font-light leading-relaxed">
+            Professional trajectory across front-end engineering, database architecture, and full-stack development.
           </p>
         </div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-primary-500/50 via-primary-500/20 to-transparent hidden sm:block" />
-
-          <div className="space-y-8">
-            {experience.map((exp, idx) => (
-              <div key={exp.company} className="relative flex gap-6">
-                {/* Timeline dot */}
-                <div className="hidden sm:flex flex-col items-center">
-                  <div
-                    className="w-12 h-12 rounded-xl border-2 flex items-center justify-center text-xl flex-shrink-0 bg-dark-800 z-10"
-                    style={{ borderColor: exp.accent }}
-                  >
-                    {exp.icon}
-                  </div>
-                </div>
-
-                {/* Card */}
-                <div className={`glass-card border ${exp.color} p-6 flex-1`}>
-                  {/* Header */}
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
-                    <div>
-                      <h3 className="text-white font-bold text-lg">{exp.role}</h3>
-                      <p className="font-semibold" style={{ color: exp.accent }}>
-                        {exp.company}
-                      </p>
-                    </div>
-                    <div className="flex flex-col items-start sm:items-end gap-1">
-                      <span className="px-3 py-1 text-xs font-mono rounded-full bg-white/5 border border-white/10 text-neutral-300 whitespace-nowrap">
-                        {exp.period}
-                      </span>
-                      <span className="flex items-center gap-1 text-neutral-500 text-xs">
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        {exp.location}
-                      </span>
-                    </div>
+        {/* Experience List - mbrown.work client row style */}
+        <div className="divide-y divide-white/10 border-t border-b border-white/10">
+          {experience.map((exp, idx) => {
+            const isExpanded = expandedIndex === idx;
+            return (
+              <div
+                key={exp.company}
+                className="group transition-colors duration-300"
+              >
+                {/* Clickable Header Row */}
+                <button
+                  onClick={() => setExpandedIndex(isExpanded ? null : idx)}
+                  className="w-full py-8 flex flex-col md:flex-row md:items-center justify-between gap-4 text-left hover:bg-white/[0.015] px-4 transition-all"
+                >
+                  <div className="flex items-center gap-6">
+                    <span className="font-mono text-xs text-neutral-600">0{idx + 1}</span>
+                    <span className="text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-tight text-white group-hover:text-primary-300 transition-colors">
+                      {exp.company}
+                    </span>
+                    <span className="hidden sm:inline font-mono text-xs px-2.5 py-1 border border-white/10 text-neutral-400">
+                      {exp.location}
+                    </span>
                   </div>
 
-                  {/* Responsibilities */}
-                  <ul className="space-y-2">
-                    {exp.description.map((point, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-neutral-300 text-sm leading-relaxed">
-                        <svg
-                          className="w-4 h-4 flex-shrink-0 mt-0.5"
-                          fill="none"
-                          stroke={exp.accent}
-                          viewBox="0 0 24 24"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4" />
-                        </svg>
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                  <div className="flex items-center gap-6 font-mono text-xs text-neutral-400">
+                    <span className="text-neutral-300">{exp.role}</span>
+                    <span className="text-neutral-600">/</span>
+                    <span className="text-neutral-500 whitespace-nowrap">{exp.period}</span>
+                    <span className="text-primary-400 text-lg transition-transform duration-300 transform">
+                      {isExpanded ? '—' : '+'}
+                    </span>
+                  </div>
+                </button>
+
+                {/* Expanded Details Drawer */}
+                {isExpanded && (
+                  <div className="px-4 pb-8 pt-2 pl-12 sm:pl-16 border-t border-white/5 animate-fade-in">
+                    <div className="grid md:grid-cols-12 gap-8">
+                      <div className="md:col-span-8 space-y-3">
+                        {exp.description.map((point, i) => (
+                          <div key={i} className="flex items-start gap-3 text-sm text-neutral-300 leading-relaxed font-light">
+                            <span className="text-primary-400 font-mono mt-0.5">↳</span>
+                            <span>{point}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="md:col-span-4 font-mono text-xs text-neutral-500 flex flex-col justify-between">
+                        <div>
+                          <p className="uppercase tracking-widest text-neutral-400 mb-1">Location</p>
+                          <p className="text-neutral-300 mb-4">{exp.location}, India</p>
+                          <p className="uppercase tracking-widest text-neutral-400 mb-1">Focus Area</p>
+                          <p className="text-neutral-300">
+                            {idx === 0 ? 'Front-End UI & Responsive Systems' : 'DBMS Architecture & SQL Optimization'}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </div>
     </section>

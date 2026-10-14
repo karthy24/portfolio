@@ -1,24 +1,29 @@
 import { useState, useEffect } from 'react';
 import { personal } from '../data';
 
-const navItems = ['Home', 'About', 'Skills', 'Projects', 'Experience', 'Contact'];
+const navItems = [
+  { id: 'home', label: 'Home', num: '01' },
+  { id: 'projects', label: 'Work', num: '02' },
+  { id: 'experience', label: 'Experience', num: '03' },
+  { id: 'skills', label: 'Skills', num: '04' },
+  { id: 'about', label: 'About', num: '05' },
+  { id: 'contact', label: 'Contact', num: '06' },
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('Home');
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 30);
-
-      // Detect active section
-      const sections = navItems.map(n => document.getElementById(n.toLowerCase()));
+      const sections = navItems.map((n) => document.getElementById(n.id));
       sections.forEach((section) => {
         if (section) {
           const rect = section.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(section.id.charAt(0).toUpperCase() + section.id.slice(1));
+          if (rect.top <= 140 && rect.bottom >= 140) {
+            setActiveSection(section.id);
           }
         }
       });
@@ -28,7 +33,7 @@ export default function Navbar() {
   }, []);
 
   const scrollTo = (id) => {
-    const el = document.getElementById(id.toLowerCase());
+    const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
     setMenuOpen(false);
   };
@@ -37,106 +42,98 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-dark-950/80 backdrop-blur-xl border-b border-white/5 py-3'
-          : 'py-5'
+          ? 'bg-dark-950/85 backdrop-blur-md border-b border-white/10 py-3.5'
+          : 'py-6 border-b border-transparent'
       }`}
     >
-      <nav className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
-        {/* Logo */}
+      <nav className="max-w-7xl mx-auto px-6 sm:px-12 md:px-16 flex items-center justify-between">
+        {/* Brand Mark */}
         <button
           onClick={() => scrollTo('home')}
-          className="flex items-center gap-2 group"
+          className="flex items-center gap-3 group text-left"
         >
-          <span className="w-8 h-8 rounded-lg bg-primary-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-primary-600/30 group-hover:bg-primary-500 transition-colors">
+          <div className="w-8 h-8 border border-white/30 flex items-center justify-center font-mono text-sm font-bold text-white group-hover:border-primary-400 transition-colors">
             K
-          </span>
-          <span className="font-bold text-white">
-            Karthikeyan<span className="text-primary-400">.</span>
+          </div>
+          <span className="font-mono text-xs uppercase tracking-widest text-white group-hover:text-primary-300 transition-colors">
+            Karthikeyan N<span className="text-primary-400">.</span>
           </span>
         </button>
 
         {/* Desktop Nav */}
-        <ul className="hidden md:flex items-center gap-6">
-          {navItems.map((item) => (
-            <li key={item}>
-              <button
-                onClick={() => scrollTo(item)}
-                className={`nav-link relative pb-1 ${
-                  activeSection === item ? 'text-white' : ''
-                }`}
-              >
-                {item}
-                {activeSection === item && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-500 rounded-full" />
-                )}
-              </button>
-            </li>
-          ))}
+        <ul className="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-wider">
+          {navItems.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <li key={item.id}>
+                <button
+                  onClick={() => scrollTo(item.id)}
+                  className={`group relative py-1 transition-colors ${
+                    isActive ? 'text-white font-semibold' : 'text-neutral-400 hover:text-white'
+                  }`}
+                >
+                  <span className="text-[10px] text-neutral-600 group-hover:text-primary-400 mr-1.5">
+                    {item.num}
+                  </span>
+                  <span>{item.label}</span>
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-primary-400" />
+                  )}
+                </button>
+              </li>
+            );
+          })}
         </ul>
 
-        {/* CTA */}
-        <div className="hidden md:flex items-center gap-3">
+        {/* Resume Action */}
+        <div className="hidden md:flex items-center gap-4">
           <a
             href={personal.resume}
             target="_blank"
             rel="noreferrer"
-            className="btn-primary text-sm py-2 px-4"
+            download="Karthikeyan-N-Resume.pdf"
+            className="px-4 py-2 border border-white/20 hover:border-white font-mono text-xs uppercase tracking-wider text-white transition-colors"
           >
-            Resume ↗
+            CV (PDF) ↗
           </a>
         </div>
 
-        {/* Mobile hamburger */}
+        {/* Mobile Hamburger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden flex flex-col gap-1.5 p-1"
-          aria-label="Toggle menu"
+          className="md:hidden font-mono text-xs uppercase tracking-widest px-3 py-1.5 border border-white/20 text-white"
         >
-          <span
-            className={`block w-6 h-0.5 bg-white transition-all duration-300 ${
-              menuOpen ? 'rotate-45 translate-y-2' : ''
-            }`}
-          />
-          <span
-            className={`block w-6 h-0.5 bg-white transition-all duration-300 ${
-              menuOpen ? 'opacity-0' : ''
-            }`}
-          />
-          <span
-            className={`block w-6 h-0.5 bg-white transition-all duration-300 ${
-              menuOpen ? '-rotate-45 -translate-y-2' : ''
-            }`}
-          />
+          {menuOpen ? 'CLOSE ✕' : 'MENU //'}
         </button>
       </nav>
 
-      {/* Mobile menu */}
+      {/* Mobile Drawer */}
       {menuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-dark-900/95 backdrop-blur-xl border-b border-white/10 py-4 px-6">
-          <ul className="flex flex-col gap-4">
+        <div className="md:hidden bg-dark-950/95 backdrop-blur-xl border-b border-white/10 px-6 py-8">
+          <ul className="space-y-4 font-mono text-sm uppercase tracking-wider">
             {navItems.map((item) => (
-              <li key={item}>
+              <li key={item.id}>
                 <button
-                  onClick={() => scrollTo(item)}
-                  className={`w-full text-left nav-link text-base ${
-                    activeSection === item ? 'text-white' : ''
-                  }`}
+                  onClick={() => scrollTo(item.id)}
+                  className="w-full text-left py-2 flex items-center justify-between text-neutral-300 hover:text-white border-b border-white/5"
                 >
-                  {item}
+                  <span>{item.label}</span>
+                  <span className="text-xs text-neutral-600">{item.num}</span>
                 </button>
               </li>
             ))}
-            <li>
-              <a
-                href={personal.resume}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-primary text-sm w-full justify-center"
-              >
-                Resume ↗
-              </a>
-            </li>
           </ul>
+          <div className="mt-6 pt-4 border-t border-white/10">
+            <a
+              href={personal.resume}
+              target="_blank"
+              rel="noreferrer"
+              download="Karthikeyan-N-Resume.pdf"
+              className="block w-full text-center py-3 bg-white text-dark-950 font-mono text-xs font-bold uppercase tracking-wider"
+            >
+              Download CV ↗
+            </a>
+          </div>
         </div>
       )}
     </header>
