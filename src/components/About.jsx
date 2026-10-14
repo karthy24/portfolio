@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react';
+import { animate, stagger } from 'animejs';
 import { personal } from '../data';
 
 const metrics = [
@@ -8,11 +10,61 @@ const metrics = [
 ];
 
 export default function About() {
+  const sectionRef = useRef(null);
+  const animatedRef = useRef(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !animatedRef.current) {
+            animatedRef.current = true;
+
+            animate('.about-header', {
+              opacity: [0, 1],
+              translateY: [40, 0],
+              duration: 800,
+              ease: 'outExpo',
+            });
+
+            animate('.about-narrative', {
+              opacity: [0, 1],
+              translateY: [50, 0],
+              duration: 900,
+              delay: 150,
+              ease: 'outExpo',
+            });
+
+            animate('.about-metric-card', {
+              opacity: [0, 1],
+              scale: [0.95, 1],
+              translateY: [30, 0],
+              delay: stagger(120, { start: 250 }),
+              duration: 850,
+              ease: 'outExpo',
+            });
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="about" className="relative py-28 px-6 sm:px-12 md:px-16 border-b border-white/5">
+    <section
+      ref={sectionRef}
+      id="about"
+      className="relative py-28 px-6 sm:px-12 md:px-16 border-b border-white/5"
+    >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/10 mb-16">
+        <div className="about-header opacity-0 flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/10 mb-16">
           <div>
             <p className="font-mono text-xs text-primary-400 uppercase tracking-[0.25em] mb-3">05 / Profile</p>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white">
@@ -27,7 +79,7 @@ export default function About() {
         {/* Narrative & Metrics */}
         <div className="grid lg:grid-cols-12 gap-12 items-start">
           {/* Left Column: Indented Editorial Narrative */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="about-narrative opacity-0 lg:col-span-7 space-y-6">
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white uppercase tracking-tight leading-snug">
               Bridging clean code, relational databases, and data-driven insight.
             </h3>
@@ -56,7 +108,7 @@ export default function About() {
                 target="_blank"
                 rel="noreferrer"
                 download="Karthikeyan-N-Resume.pdf"
-                className="px-6 py-3 bg-white text-dark-950 hover:bg-neutral-200 font-mono text-xs font-bold uppercase tracking-wider transition-colors inline-flex items-center gap-2"
+                className="px-6 py-3 bg-white text-dark-950 hover:bg-neutral-200 font-mono text-xs font-bold uppercase tracking-wider transition-colors inline-flex items-center gap-2 shadow-lg"
               >
                 <span>Download Resume (PDF)</span>
                 <span>↓</span>
@@ -75,7 +127,7 @@ export default function About() {
             {metrics.map((m) => (
               <div
                 key={m.label}
-                className="p-6 border border-white/10 bg-white/[0.015] flex flex-col justify-between"
+                className="about-metric-card opacity-0 p-6 border border-white/10 bg-white/[0.015] flex flex-col justify-between shadow-xl"
               >
                 <p className="font-mono text-4xl sm:text-5xl font-bold text-white mb-3 tracking-tight">
                   {m.value}
@@ -92,7 +144,7 @@ export default function About() {
             ))}
 
             {/* Quick Status Box */}
-            <div className="col-span-2 p-6 border border-primary-500/20 bg-primary-500/5 flex items-center justify-between">
+            <div className="about-metric-card opacity-0 col-span-2 p-6 border border-primary-500/20 bg-primary-500/5 flex items-center justify-between">
               <div>
                 <p className="font-mono text-xs text-primary-300 uppercase tracking-widest font-semibold">Ready for Deployment</p>
                 <p className="text-neutral-400 text-xs mt-0.5">Available for full-time, contract, or freelance technical roles.</p>

@@ -1,14 +1,57 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { animate, stagger } from 'animejs';
 import { experience } from '../data';
 
 export default function Experience() {
   const [expandedIndex, setExpandedIndex] = useState(0);
+  const sectionRef = useRef(null);
+  const animatedRef = useRef(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !animatedRef.current) {
+            animatedRef.current = true;
+
+            // Header entrance
+            animate('.exp-header', {
+              opacity: [0, 1],
+              translateY: [40, 0],
+              duration: 800,
+              ease: 'outExpo',
+            });
+
+            // Staggered rows entrance
+            animate('.exp-row', {
+              opacity: [0, 1],
+              translateX: [-40, 0],
+              delay: stagger(180, { start: 150 }),
+              duration: 900,
+              ease: 'outExpo',
+            });
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section id="experience" className="relative py-28 px-6 sm:px-12 md:px-16 border-b border-white/5">
+    <section
+      ref={sectionRef}
+      id="experience"
+      className="relative py-28 px-6 sm:px-12 md:px-16 border-b border-white/5"
+    >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/10 mb-16">
+        <div className="exp-header opacity-0 flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/10 mb-16">
           <div>
             <p className="font-mono text-xs text-primary-400 uppercase tracking-[0.25em] mb-3">03 / Background</p>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white">
@@ -27,7 +70,7 @@ export default function Experience() {
             return (
               <div
                 key={exp.company}
-                className="group transition-colors duration-300"
+                className="exp-row opacity-0 group transition-colors duration-300"
               >
                 {/* Clickable Header Row */}
                 <button

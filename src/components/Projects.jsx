@@ -1,11 +1,57 @@
+import { useEffect, useRef } from 'react';
+import { animate, stagger } from 'animejs';
 import { projects, personal } from '../data';
 
 export default function Projects() {
+  const sectionRef = useRef(null);
+  const animatedRef = useRef(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !animatedRef.current) {
+            animatedRef.current = true;
+
+            // Header entrance
+            animate('.projects-header', {
+              opacity: [0, 1],
+              translateY: [40, 0],
+              duration: 800,
+              ease: 'outExpo',
+            });
+
+            // Staggered cards entrance
+            animate('.project-card', {
+              opacity: [0, 1],
+              translateY: [70, 0],
+              scale: [0.97, 1],
+              delay: stagger(220, { start: 150 }),
+              duration: 1000,
+              ease: 'outExpo',
+            });
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="projects" className="relative py-28 px-6 sm:px-12 md:px-16 border-b border-white/5">
+    <section
+      ref={sectionRef}
+      id="projects"
+      className="relative py-28 px-6 sm:px-12 md:px-16 border-b border-white/5"
+    >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/10 mb-16">
+        <div className="projects-header opacity-0 flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/10 mb-16">
           <div>
             <p className="font-mono text-xs text-primary-400 uppercase tracking-[0.25em] mb-3">02 / Selected Works</p>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white">
@@ -24,7 +70,7 @@ export default function Projects() {
             return (
               <div
                 key={project.title}
-                className="group relative border border-white/10 hover:border-white/30 bg-white/[0.015] hover:bg-white/[0.03] transition-all duration-500 overflow-hidden"
+                className="project-card opacity-0 group relative border border-white/10 hover:border-white/30 bg-white/[0.015] hover:bg-white/[0.03] transition-all duration-500 overflow-hidden shadow-2xl"
               >
                 <div className="grid lg:grid-cols-12 gap-8 p-8 sm:p-12 items-center">
                   {/* Left Column: Number + Info */}
@@ -81,7 +127,7 @@ export default function Projects() {
                           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
                         </div>
                         <div className="my-auto text-center">
-                          <div className="inline-block p-4 border border-indigo-500/30 bg-indigo-500/10 mb-3">
+                          <div className="inline-block p-4 border border-indigo-500/30 bg-indigo-500/10 mb-3 shadow-inner">
                             <span className="text-4xl">🚨</span>
                           </div>
                           <p className="font-mono text-xs text-indigo-300 uppercase tracking-widest">
@@ -103,7 +149,7 @@ export default function Projects() {
                           <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
                         </div>
                         <div className="my-auto text-center">
-                          <div className="inline-block p-4 border border-cyan-500/30 bg-cyan-500/10 mb-3">
+                          <div className="inline-block p-4 border border-cyan-500/30 bg-cyan-500/10 mb-3 shadow-inner">
                             <span className="text-4xl">🌱</span>
                           </div>
                           <p className="font-mono text-xs text-cyan-300 uppercase tracking-widest">
@@ -125,7 +171,7 @@ export default function Projects() {
                           <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
                         </div>
                         <div className="my-auto text-center">
-                          <div className="inline-block p-4 border border-purple-500/30 bg-purple-500/10 mb-3">
+                          <div className="inline-block p-4 border border-purple-500/30 bg-purple-500/10 mb-3 shadow-inner">
                             <span className="text-4xl">✨</span>
                           </div>
                           <p className="font-mono text-xs text-purple-300 uppercase tracking-widest">
@@ -140,7 +186,7 @@ export default function Projects() {
                       </div>
                     )}
 
-                    {/* View Code Overlay Button */}
+                    {/* View Code Button */}
                     <div className="relative z-10 mt-auto pt-4 flex justify-end">
                       <a
                         href={project.github}

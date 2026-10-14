@@ -10,7 +10,7 @@ const navItems = [
   { id: 'contact', label: 'Contact', num: '06' },
 ];
 
-export default function Navbar() {
+export default function Navbar({ tubelightOn, setTubelightOn }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -85,14 +85,31 @@ export default function Navbar() {
           })}
         </ul>
 
-        {/* Resume Action */}
-        <div className="hidden md:flex items-center gap-4">
+        {/* Right Actions: Tubelight Switch + Resume */}
+        <div className="hidden md:flex items-center gap-3">
+          <button
+            onClick={() => setTubelightOn(!tubelightOn)}
+            className={`px-3 py-1.5 border font-mono text-xs uppercase tracking-wider flex items-center gap-1.5 transition-all duration-300 ${
+              tubelightOn
+                ? 'border-pink-500/50 bg-pink-500/10 text-pink-300 shadow-[0_0_15px_rgba(236,72,153,0.3)]'
+                : 'border-white/15 text-neutral-400 hover:text-white'
+            }`}
+            title="Toggle Tubelight Illumination"
+          >
+            <span
+              className={`w-2 h-2 rounded-full ${
+                tubelightOn ? 'bg-pink-400 animate-pulse' : 'bg-neutral-600'
+              }`}
+            />
+            <span>Light: {tubelightOn ? 'ON' : 'OFF'}</span>
+          </button>
+
           <a
             href={personal.resume}
             target="_blank"
             rel="noreferrer"
             download="Karthikeyan-N-Resume.pdf"
-            className="px-4 py-2 border border-white/20 hover:border-white font-mono text-xs uppercase tracking-wider text-white transition-colors"
+            className="px-4 py-1.5 border border-white/20 hover:border-white font-mono text-xs uppercase tracking-wider text-white transition-colors"
           >
             CV (PDF) ↗
           </a>
