@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import InteractiveBackground from './components/InteractiveBackground';
-import Tubelight from './components/Tubelight';
+import LoadingScreen from './components/LoadingScreen';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -11,38 +11,31 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 export default function App() {
-  const [tubelightOn, setTubelightOn] = useState(true);
-  const [tubelightColor, setTubelightColor] = useState('pink');
+  const [loading, setLoading] = useState(true);
+  const handleLoadingDone = useCallback(() => setLoading(false), []);
 
   return (
-    <div className="relative min-h-screen">
-      {/* Interactive & Scroll-Responsive Animated Background */}
-      <InteractiveBackground />
+    <>
+      {loading && <LoadingScreen onDone={handleLoadingDone} />}
 
-      {/* Figma-style Downward Volumetric Tubelight Effect */}
-      <Tubelight
-        isOn={tubelightOn}
-        setIsOn={setTubelightOn}
-        colorKey={tubelightColor}
-        setColorKey={setTubelightColor}
-      />
+      <div className={`relative min-h-screen transition-opacity duration-700 ${loading ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+        {/* Interactive & Scroll-Responsive Animated Background */}
+        <InteractiveBackground />
 
-      {/* Content */}
-      <div className="relative z-10">
-        <Navbar
-          tubelightOn={tubelightOn}
-          setTubelightOn={setTubelightOn}
-        />
-        <main>
-          <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Experience />
-          <Contact />
-        </main>
-        <Footer />
+        {/* Content */}
+        <div className="relative z-10">
+          <Navbar />
+          <main>
+            <Hero />
+            <About />
+            <Skills />
+            <Projects />
+            <Experience />
+            <Contact />
+          </main>
+          <Footer />
+        </div>
       </div>
-    </div>
+    </>
   );
 }

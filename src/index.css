@@ -8,7 +8,7 @@
   }
   body {
     @apply bg-dark-950 text-neutral-100 font-sans antialiased;
-    background: radial-gradient(ellipse at top, #0f0f1a 0%, #0a0a0f 100%);
+    background: radial-gradient(ellipse at top, #0b1a17 0%, #030d0b 100%);
   }
   ::selection {
     @apply bg-primary-500/30 text-primary-200;
@@ -29,14 +29,14 @@
   .glass-card:hover {
     @apply border-primary-500/40;
     transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+    box-shadow: 0 20px 40px rgba(20, 184, 166, 0.15);
   }
   .btn-primary {
     @apply inline-flex items-center gap-2 px-6 py-3 bg-primary-600 hover:bg-primary-500 text-white font-semibold rounded-xl transition-all duration-300;
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 0 20px rgba(20, 184, 166, 0.3);
   }
   .btn-primary:hover {
-    box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+    box-shadow: 0 0 30px rgba(20, 184, 166, 0.5);
     transform: translateY(-2px);
   }
   .btn-outline {
@@ -54,19 +54,19 @@
   }
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #818cf8, #06b6d4);
+    background-image: linear-gradient(135deg, #2dd4bf, #34d399);
   }
   .glow-dot {
     @apply w-2 h-2 rounded-full bg-primary-400 animate-pulse-slow;
-    box-shadow: 0 0 8px 2px rgba(99, 102, 241, 0.6);
+    box-shadow: 0 0 8px 2px rgba(20, 184, 166, 0.6);
   }
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0a0a0f; }
-::-webkit-scrollbar-thumb { background: #4f46e5; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #6366f1; }
+::-webkit-scrollbar-track { background: #030d0b; }
+::-webkit-scrollbar-thumb { background: #0d9488; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #14b8a6; }
 
 /* Noise texture overlay */
 body::before {
@@ -91,7 +91,7 @@ body::before {
 .orb-1 {
   width: 500px;
   height: 500px;
-  background: #4f46e5;
+  background: #0d9488;
   top: -100px;
   left: -100px;
   animation-delay: 0s;
@@ -99,7 +99,7 @@ body::before {
 .orb-2 {
   width: 400px;
   height: 400px;
-  background: #06b6d4;
+  background: #34d399;
   bottom: -50px;
   right: -50px;
   animation-delay: 3s;
@@ -107,25 +107,8 @@ body::before {
 .orb-3 {
   width: 300px;
   height: 300px;
-  background: #8b5cf6;
+  background: #06b6d4;
   top: 40%;
   left: 50%;
   animation-delay: 6s;
-}
-
-/* Tubelight ignition flicker animation */
-@keyframes tubelightFlicker {
-  0% { opacity: 0; }
-  10% { opacity: 0.8; }
-  15% { opacity: 0.1; }
-  25% { opacity: 0.9; }
-  30% { opacity: 0.2; }
-  45% { opacity: 1; }
-  60% { opacity: 0.7; }
-  75% { opacity: 1; }
-  100% { opacity: 1; }
-}
-
-.animate-tubelight-flicker {
-  animation: tubelightFlicker 0.38s ease-out forwards;
 }
