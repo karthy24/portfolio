@@ -59,7 +59,7 @@ export default function Projects() {
             </h2>
           </div>
           <p className="text-neutral-400 max-w-md text-sm sm:text-base font-light leading-relaxed">
-            Real-world systems spanning computer vision AI, agricultural IoT dashboards, and secure generative AI platforms.
+            Real-world systems spanning full-stack e-governance platforms, computer vision AI, agricultural IoT dashboards, and secure generative AI platforms.
           </p>
         </div>
 
@@ -121,6 +121,28 @@ export default function Projects() {
                   <div className="lg:col-span-5 relative aspect-[4/3] rounded-none border border-white/10 bg-dark-900 overflow-hidden flex flex-col justify-between p-6">
                     {/* Generative Visual Elements per Project */}
                     {idx === 0 && (
+                      <div className="absolute inset-0 flex flex-col justify-between p-6 bg-gradient-to-br from-amber-950/40 via-dark-950 to-dark-900">
+                        <div className="flex justify-between items-center font-mono text-xs text-neutral-500">
+                          <span>PRANAV_ESEVAI // LIVE_SYSTEM</span>
+                          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                        </div>
+                        <div className="my-auto text-center">
+                          <div className="inline-block p-4 border border-orange-500/30 bg-orange-500/10 mb-3 shadow-inner">
+                            <span className="text-4xl">🖨️</span>
+                          </div>
+                          <p className="font-mono text-xs text-orange-300 uppercase tracking-widest font-semibold">
+                            Smart Xerox &amp; Upload Portal
+                          </p>
+                          <p className="font-mono text-[10px] text-neutral-400 mt-1">Supabase Realtime · QR Engine · 24h Purge</p>
+                        </div>
+                        <div className="font-mono text-[10px] text-neutral-500 flex justify-between">
+                          <span>CLIENT: LOCAL RETAIL</span>
+                          <span className="text-emerald-400 font-semibold">STATUS: PRODUCTION LIVE</span>
+                        </div>
+                      </div>
+                    )}
+
+                    {idx === 1 && (
                       <div className="absolute inset-0 flex flex-col justify-between p-6 bg-gradient-to-br from-indigo-950/40 via-dark-950 to-dark-900">
                         <div className="flex justify-between items-center font-mono text-xs text-neutral-500">
                           <span>AI_VISION_SYS // YOLO</span>
@@ -142,7 +164,7 @@ export default function Projects() {
                       </div>
                     )}
 
-                    {idx === 1 && (
+                    {idx === 2 && (
                       <div className="absolute inset-0 flex flex-col justify-between p-6 bg-gradient-to-br from-emerald-950/40 via-dark-950 to-dark-900">
                         <div className="flex justify-between items-center font-mono text-xs text-neutral-500">
                           <span>AGRI_GUIDE // IOT</span>
@@ -164,7 +186,7 @@ export default function Projects() {
                       </div>
                     )}
 
-                    {idx === 2 && (
+                    {idx === 3 && (
                       <div className="absolute inset-0 flex flex-col justify-between p-6 bg-gradient-to-br from-purple-950/40 via-dark-950 to-dark-900">
                         <div className="flex justify-between items-center font-mono text-xs text-neutral-500">
                           <span>NEURAL_STUDIO // GEN_AI</span>
@@ -186,16 +208,29 @@ export default function Projects() {
                       </div>
                     )}
 
-                    {/* View Code Button */}
-                    <div className="relative z-10 mt-auto pt-4 flex justify-end">
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="px-4 py-2 bg-white/10 hover:bg-white text-white hover:text-dark-950 font-mono text-xs uppercase tracking-wider transition-colors"
-                      >
-                        View Code ↗
-                      </a>
+                    {/* View Code & Live Demo Buttons */}
+                    <div className="relative z-10 mt-auto pt-4 flex flex-wrap items-center justify-end gap-2.5">
+                      {project.demo && (
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="px-4 py-2 bg-primary-500 hover:bg-primary-400 text-dark-950 font-mono text-xs font-bold uppercase tracking-wider transition-all inline-flex items-center gap-1.5 shadow-md hover:shadow-primary-500/30"
+                        >
+                          <span>Live Demo</span>
+                          <span>↗</span>
+                        </a>
+                      )}
+                      {project.github && project.github !== '#' && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="px-4 py-2 bg-white/10 hover:bg-white text-white hover:text-dark-950 font-mono text-xs uppercase tracking-wider transition-colors"
+                        >
+                          View Code ↗
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>

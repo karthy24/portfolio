@@ -53,6 +53,24 @@ export const skills = [
 
 export const projects = [
   {
+    title: 'PRANAV E-SEVAI CENTRE: Smart Xerox & Document Upload System',
+    description:
+      'A modern full-stack document printing and e-governance management platform deployed in production. Customers scan a counter QR code to upload documents (PDF/DOCX/Images) without WhatsApp, receiving unique instant tokens. Features real-time shop admin dashboard with Web Audio alerts and automated 24-hour cloud storage cleanup.',
+    tags: ['React.js', 'Vite', 'Tailwind CSS', 'Supabase', 'PostgreSQL', 'Realtime', 'Python', 'Vercel'],
+    icon: '🖨️',
+    color: 'from-orange-500/20 to-amber-600/10',
+    border: 'border-orange-500/20',
+    accent: '#ff5a00',
+    highlights: [
+      'Contact-free QR code document upload supporting up to 20 files & 25MB per file',
+      'Real-time shop admin dashboard with instant audio chimes and in-browser printing',
+      'Automated 24-hour privacy retention policy with background cloud purge',
+      'Bilingual interface (English & தமிழ்) optimized for local retail operations',
+    ],
+    github: 'https://github.com/karthy24',
+    demo: 'https://pranav-esevai-centre.vercel.app',
+  },
+  {
     title: 'Real-Time Fall Detection & Alert System',
     description:
       'Real-time AI fall detection system built with YOLO and OpenCV for elderly care and monitoring. Integrates SMS and email notifications using Twilio and SMTP services.',

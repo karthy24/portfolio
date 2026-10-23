@@ -3,7 +3,7 @@ import { animate, stagger } from 'animejs';
 import { personal } from '../data';
 
 const metrics = [
-  { label: 'Production Systems', value: '3+', desc: 'MERN Stack & AI Vision' },
+  { label: 'Production Systems', value: '4+', desc: 'Full-Stack, MERN & AI' },
   { label: 'Internships', value: '02', desc: 'BluonTech & Vibhathi Labs' },
   { label: 'Technical Domains', value: '04', desc: 'Dev · SQL · BI · Marketing' },
   { label: 'Verified Skills', value: '20+', desc: 'Modern Tools & Stacks' },
