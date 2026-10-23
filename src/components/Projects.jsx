@@ -208,30 +208,6 @@ export default function Projects() {
                       </div>
                     )}
 
-                    {/* View Code & Live Demo Buttons */}
-                    <div className="relative z-10 mt-auto pt-4 flex flex-wrap items-center justify-end gap-2.5">
-                      {project.demo && (
-                        <a
-                          href={project.demo}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="px-4 py-2 bg-primary-500 hover:bg-primary-400 text-dark-950 font-mono text-xs font-bold uppercase tracking-wider transition-all inline-flex items-center gap-1.5 shadow-md hover:shadow-primary-500/30"
-                        >
-                          <span>Live Demo</span>
-                          <span>↗</span>
-                        </a>
-                      )}
-                      {project.github && project.github !== '#' && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="px-4 py-2 bg-white/10 hover:bg-white text-white hover:text-dark-950 font-mono text-xs uppercase tracking-wider transition-colors"
-                        >
-                          View Code ↗
-                        </a>
-                      )}
-                    </div>
                   </div>
                 </div>
               </div>
