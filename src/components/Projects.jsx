@@ -123,7 +123,7 @@ export default function Projects() {
                     {idx === 0 && (
                       <div className="absolute inset-0 flex flex-col justify-between p-6 bg-gradient-to-br from-amber-950/40 via-dark-950 to-dark-900">
                         <div className="flex justify-between items-center font-mono text-xs text-neutral-500">
-                          <span>PRANAV_ESEVAI // LIVE_SYSTEM</span>
+                          <span>SMART_PRINT // LIVE_SYSTEM</span>
                           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
                         </div>
                         <div className="my-auto text-center">

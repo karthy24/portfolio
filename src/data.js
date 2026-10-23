@@ -53,7 +53,7 @@ export const skills = [
 
 export const projects = [
   {
-    title: 'PRANAV E-SEVAI CENTRE: Smart Xerox & Document Upload System',
+    title: 'Smart Xerox, Printing & Document Upload Management System',
     description:
       'A modern full-stack document printing and e-governance management platform deployed in production. Customers scan a counter QR code to upload documents (PDF/DOCX/Images) without WhatsApp, receiving unique instant tokens. Features real-time shop admin dashboard with Web Audio alerts and automated 24-hour cloud storage cleanup.',
     tags: ['React.js', 'Vite', 'Tailwind CSS', 'Supabase', 'PostgreSQL', 'Realtime', 'Python', 'Vercel'],
