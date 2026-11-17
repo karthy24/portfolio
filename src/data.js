@@ -158,7 +158,7 @@ export const education = [
     degree: 'Bachelor of Engineering (Computer Science and Engineering)',
     institution: 'National Engineering College, Kovilpatti',
     period: '2023 – 2026',
-    status: 'In Progress',
+    status: 'Completed',
     icon: '🎓',
     accent: '#14b8a6',
     highlights: [
