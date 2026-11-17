@@ -104,16 +104,30 @@ export default function Projects() {
                       </div>
                     </div>
 
-                    {/* Tech Tags */}
-                    <div className="flex flex-wrap gap-2 pt-6 border-t border-white/5">
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-3 py-1 text-xs font-mono text-neutral-400 bg-white/5 border border-white/5"
+                    {/* Tech Tags & Live Demo */}
+                    <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-white/5">
+                      <div className="flex flex-wrap gap-2">
+                        {project.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-3 py-1 text-xs font-mono text-neutral-400 bg-white/5 border border-white/5"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+
+                      {project.demo && project.demo !== '#' && (
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono uppercase tracking-wider font-semibold text-emerald-400 border border-emerald-500/40 bg-emerald-500/10 hover:bg-emerald-500/20 transition-all shadow-lg hover:shadow-emerald-500/10"
                         >
-                          {tag}
-                        </span>
-                      ))}
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                          Live Demo ↗
+                        </a>
+                      )}
                     </div>
                   </div>
 
@@ -190,24 +204,38 @@ export default function Projects() {
                       <div className="absolute inset-0 flex flex-col justify-between p-6 bg-gradient-to-br from-purple-950/40 via-dark-950 to-dark-900">
                         <div className="flex justify-between items-center font-mono text-xs text-neutral-500">
                           <span>NEURAL_STUDIO // GEN_AI</span>
-                          <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+                          <span className="w-2 h-2 rounded-full bg-purple-400 animate-ping" />
                         </div>
                         <div className="my-auto text-center">
                           <div className="inline-block p-4 border border-purple-500/30 bg-purple-500/10 mb-3 shadow-inner">
-                            <span className="text-4xl">✨</span>
+                            <span className="text-4xl">🎨</span>
                           </div>
-                          <p className="font-mono text-xs text-purple-300 uppercase tracking-widest">
+                          <p className="font-mono text-xs text-purple-300 uppercase tracking-widest font-semibold">
                             AI Synthesis Engine
                           </p>
-                          <p className="font-mono text-[10px] text-neutral-500 mt-1">OpenAI API · Express Security Proxy</p>
+                          <p className="font-mono text-[10px] text-neutral-400 mt-1">FLUX Architecture · Express API · Cloud Gallery</p>
                         </div>
-                        <div className="font-mono text-[10px] text-neutral-600 flex justify-between">
-                          <span>ENCRYPTED_AUTH: ENABLED</span>
-                          <span>MERN: FULL-STACK</span>
+                        <div className="font-mono text-[10px] text-neutral-500 flex justify-between">
+                          <span>STORAGE: MONGODB</span>
+                          <span className="text-emerald-400 font-semibold">STATUS: LIVE DEMO</span>
                         </div>
                       </div>
                     )}
 
+                    {/* Live Demo link only if demo exists */}
+                    {project.demo && (
+                      <div className="relative z-10 mt-auto pt-4 flex justify-end">
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="px-4 py-2 bg-primary-500 hover:bg-primary-400 text-dark-950 font-mono text-xs font-bold uppercase tracking-wider transition-all inline-flex items-center gap-1.5 shadow-md hover:shadow-primary-500/30"
+                        >
+                          <span>Live Demo</span>
+                          <span>↗</span>
+                        </a>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

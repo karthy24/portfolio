@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react';
 import { personal } from '../data';
 
 const navItems = [
-  { id: 'home', label: 'Home', num: '01' },
-  { id: 'projects', label: 'Work', num: '02' },
-  { id: 'experience', label: 'Experience', num: '03' },
-  { id: 'skills', label: 'Skills', num: '04' },
-  { id: 'about', label: 'About', num: '05' },
-  { id: 'contact', label: 'Contact', num: '06' },
+  { id: 'home', label: 'Home' },
+  { id: 'about', label: 'About' },
+  { id: 'projects', label: 'Work' },
+  { id: 'skills', label: 'Skill' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'education', label: 'Education' },
+  { id: 'contact', label: 'Contact' },
 ];
 
 export default function Navbar() {
@@ -72,10 +73,7 @@ export default function Navbar() {
                     isActive ? 'text-white font-semibold' : 'text-neutral-400 hover:text-white'
                   }`}
                 >
-                  <span className="text-[10px] text-neutral-600 group-hover:text-primary-400 mr-1.5">
-                    {item.num}
-                  </span>
-                  <span>{item.label}</span>
+                  <span className="tracking-widest">{item.label}</span>
                   {isActive && (
                     <span className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-primary-400" />
                   )}
@@ -117,8 +115,7 @@ export default function Navbar() {
                   onClick={() => scrollTo(item.id)}
                   className="w-full text-left py-2 flex items-center justify-between text-neutral-300 hover:text-white border-b border-white/5"
                 >
-                  <span>{item.label}</span>
-                  <span className="text-xs text-neutral-600">{item.num}</span>
+                  <span className="tracking-widest">{item.label}</span>
                 </button>
               </li>
             ))}

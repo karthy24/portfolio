@@ -107,19 +107,20 @@ export const projects = [
   {
     title: 'AI Image Generation System',
     description:
-      'A MERN stack AI image creation tool powered by OpenAI API. Features secure backend processing with Express.js to prevent API credential exposure.',
-    tags: ['React.js', 'Node.js', 'Express.js', 'OpenAI API', 'MERN', 'MongoDB'],
+      'A full-stack AI image creation and community platform powered by FLUX AI. Features automatic prompt enhancement, instant image downloads, responsive community showcase, and secure Express.js backend.',
+    tags: ['React.js', 'Node.js', 'Express.js', 'FLUX AI', 'MongoDB', 'MERN', 'Vercel'],
     icon: '🎨',
     color: 'from-cyan-500/20 to-blue-600/10',
     border: 'border-cyan-500/20',
     accent: '#06b6d4',
     highlights: [
-      'AI-powered image generation via OpenAI API',
-      'Secure Express.js backend hiding API credentials',
-      'Full MERN stack with React.js frontend',
+      'High-definition text-to-image generation powered by FLUX AI architecture',
+      'Automated prompt enhancement for cinematic, photorealistic outputs',
+      'Interactive community gallery with real-time post creation and one-click downloads',
+      'Secure Express.js backend and MongoDB cloud storage',
     ],
     github: '#',
-    demo: null,
+    demo: 'https://image-gen-inky.vercel.app/Create',
   },
 ];
 
@@ -148,6 +149,42 @@ export const experience = [
     description: [
       'Learned core concepts of DBMS including SQL queries, database design, and management.',
       'Acquired knowledge of Oracle Apex and the fundamentals of working with relational databases.',
+    ],
+  },
+];
+
+export const education = [
+  {
+    degree: 'Bachelor of Engineering (Computer Science and Engineering)',
+    institution: 'National Engineering College, Kovilpatti',
+    period: '2023 – 2026',
+    status: 'In Progress',
+    icon: '🎓',
+    accent: '#14b8a6',
+    highlights: [
+      'Focused on Computer Science fundamentals, Full-Stack Architecture, Distributed Systems, and Modern Web Development.',
+    ],
+  },
+  {
+    degree: 'Diploma (Mechanical Engineering)',
+    institution: 'Lakshmi Ammal Polytechnic College, Kovilpatti',
+    period: '2020 – 2023',
+    status: 'Completed',
+    icon: '⚙️',
+    accent: '#06b6d4',
+    highlights: [
+      'Strong technical grounding in systems design, analytical problem solving, and engineering methodologies.',
+    ],
+  },
+  {
+    degree: 'SSLC',
+    institution: 'Lakshmi Srinivasa Vidhyalaya Matriculation School, Kovilpatti',
+    period: '2019 – 2020',
+    status: 'Completed',
+    icon: '📚',
+    accent: '#34d399',
+    highlights: [
+      'Foundational secondary education with focus on science, analytical thinking, and mathematics.',
     ],
   },
 ];
