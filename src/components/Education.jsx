@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { animate, stagger } from 'animejs';
 import { education } from '../data';
+import BounceHeading from './BounceHeading';
 
 export default function Education() {
   const sectionRef = useRef(null);
@@ -94,9 +95,12 @@ export default function Education() {
             <p className="font-mono text-xs text-primary-400 uppercase tracking-[0.25em] mb-3">
               Academic Background
             </p>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white">
+            <BounceHeading
+              tag="h2"
+              className="text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white"
+            >
               Education
-            </h2>
+            </BounceHeading>
           </div>
           <p className="text-neutral-400 max-w-md text-sm sm:text-base font-light leading-relaxed font-mono text-xs uppercase tracking-wider">
             Foundations in Computer Science, engineering problem-solving &amp; technical fundamentals.
@@ -140,9 +144,12 @@ export default function Education() {
                 {/* Right Side: Degree, Institution & Details */}
                 <div className="edu-card-content opacity-0 lg:col-span-8 flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-white/5 pt-4 lg:pt-0 lg:pl-8">
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-white uppercase tracking-tight mb-2 group-hover:text-primary-200 transition-colors">
+                    <BounceHeading
+                      tag="h3"
+                      className="text-xl sm:text-2xl font-bold text-white uppercase tracking-tight mb-2 group-hover:text-primary-200 transition-colors"
+                    >
                       {item.degree}
-                    </h3>
+                    </BounceHeading>
                     <p className="font-mono text-xs sm:text-sm text-primary-300/90 mb-4 flex items-center gap-2">
                       <span className="text-neutral-500">📍</span>
                       <span>{item.institution}</span>

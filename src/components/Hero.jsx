@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { animate } from 'animejs';
 import { personal } from '../data';
+import BounceHeading from './BounceHeading';
 
 const disciplines = [
   'Web Development & Front-End',
@@ -35,18 +36,11 @@ export default function Hero() {
       delay: 300,
       ease: 'outExpo',
     });
-    animate('.hero-quote', {
-      opacity: [0, 1],
-      translateY: [40, 0],
-      duration: 1000,
-      delay: 450,
-      ease: 'outExpo',
-    });
     animate('.hero-sub', {
       opacity: [0, 1],
       translateY: [20, 0],
       duration: 800,
-      delay: 650,
+      delay: 500,
       ease: 'outExpo',
     });
     animate('.hero-bottom', {
@@ -98,13 +92,13 @@ export default function Hero() {
           Creative Developer · Full-Stack Engineer · Tamil Nadu, IN
         </p>
 
-        {/* Requested Quote */}
-        <h1 className="hero-quote text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white leading-[1.05] uppercase opacity-0">
-          As long as I live, <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-200 via-white to-neutral-500">
-            there are infinite chances.
-          </span>
-        </h1>
+        {/* Requested Quote with Spring Bounce Up */}
+        <BounceHeading
+          tag="h1"
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white leading-[1.05] uppercase"
+        >
+          As long as I live, there are infinite chances.
+        </BounceHeading>
 
         <p className="hero-sub mt-8 text-neutral-400 text-lg sm:text-xl max-w-2xl font-light leading-relaxed opacity-0">
           Designing responsive digital experiences that balance bold technical execution with meticulous attention to detail.

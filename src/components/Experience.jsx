@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { animate, stagger } from 'animejs';
 import { experience } from '../data';
+import BounceHeading from './BounceHeading';
 
 export default function Experience() {
   const [expandedIndex, setExpandedIndex] = useState(0);
@@ -54,9 +55,12 @@ export default function Experience() {
         <div className="exp-header opacity-0 flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/10 mb-16">
           <div>
             <p className="font-mono text-xs text-primary-400 uppercase tracking-[0.25em] mb-3">03 / Background</p>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white">
+            <BounceHeading
+              tag="h2"
+              className="text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white"
+            >
               Work &amp; Experience
-            </h2>
+            </BounceHeading>
           </div>
           <p className="text-neutral-400 max-w-md text-sm sm:text-base font-light leading-relaxed">
             Professional trajectory across front-end engineering, database architecture, and full-stack development.

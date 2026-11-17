@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import InteractiveBackground from './components/InteractiveBackground';
+import ParticleBackground from './components/ParticleBackground';
 import LoadingScreen from './components/LoadingScreen';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -20,8 +20,8 @@ export default function App() {
       {loading && <LoadingScreen onDone={handleLoadingDone} />}
 
       <div className={`relative min-h-screen transition-opacity duration-700 ${loading ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-        {/* Interactive & Scroll-Responsive Animated Background */}
-        <InteractiveBackground />
+        {/* GPU Particle Field - 1:1 Tree Archetype */}
+        <ParticleBackground />
 
         {/* Content */}
         <div className="relative z-10">

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { animate, stagger } from 'animejs';
 import { projects, personal } from '../data';
+import BounceHeading from './BounceHeading';
 
 export default function Projects() {
   const sectionRef = useRef(null);
@@ -54,9 +55,12 @@ export default function Projects() {
         <div className="projects-header opacity-0 flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/10 mb-16">
           <div>
             <p className="font-mono text-xs text-primary-400 uppercase tracking-[0.25em] mb-3">02 / Selected Works</p>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white">
+            <BounceHeading
+              tag="h2"
+              className="text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white"
+            >
               Featured Projects
-            </h2>
+            </BounceHeading>
           </div>
           <p className="text-neutral-400 max-w-md text-sm sm:text-base font-light leading-relaxed">
             Real-world systems spanning full-stack e-governance platforms, computer vision AI, agricultural IoT dashboards, and secure generative AI platforms.
@@ -84,9 +88,12 @@ export default function Projects() {
                       </div>
 
                       {/* Title */}
-                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white uppercase tracking-tight mb-4 group-hover:text-primary-200 transition-colors">
+                      <BounceHeading
+                        tag="h3"
+                        className="text-2xl sm:text-3xl md:text-4xl font-bold text-white uppercase tracking-tight mb-4 group-hover:text-primary-200 transition-colors"
+                      >
                         {project.title}
-                      </h3>
+                      </BounceHeading>
 
                       {/* Description */}
                       <p className="text-neutral-300 text-sm sm:text-base leading-relaxed mb-8 font-light">

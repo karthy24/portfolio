@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-spring/web": "^10.1.2",
     "animejs": "^4.5.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+    "spring-text-engine": "^0.1.5",
     "three": "^0.158.0"
   },
   "devDependencies": {

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { animate, stagger } from 'animejs';
 import { skills } from '../data';
+import BounceHeading from './BounceHeading';
 
 export default function Skills() {
   const sectionRef = useRef(null);
@@ -54,9 +55,12 @@ export default function Skills() {
         <div className="skills-header opacity-0 flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/10 mb-16">
           <div>
             <p className="font-mono text-xs text-primary-400 uppercase tracking-[0.25em] mb-3">04 / Capabilities</p>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white">
+            <BounceHeading
+              tag="h2"
+              className="text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white"
+            >
               Technical Stack &amp; Domain
-            </h2>
+            </BounceHeading>
           </div>
           <p className="text-neutral-400 max-w-md text-sm sm:text-base font-light leading-relaxed">
             Multidisciplinary competencies combining modern full-stack development, database query optimization, data analytics, and digital marketing infrastructure.
@@ -77,9 +81,12 @@ export default function Skills() {
                   <span className="text-lg">{category.icon}</span>
                 </div>
 
-                <h3 className="text-xl font-bold text-white uppercase tracking-tight mb-6">
+                <BounceHeading
+                  tag="h3"
+                  className="text-xl font-bold text-white uppercase tracking-tight mb-6"
+                >
                   {category.category}
-                </h3>
+                </BounceHeading>
 
                 {/* Skill Badges */}
                 <div className="flex flex-wrap gap-2">

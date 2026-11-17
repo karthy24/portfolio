@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { animate, stagger } from 'animejs';
 import { personal } from '../data';
+import BounceHeading from './BounceHeading';
 
 const metrics = [
   { label: 'Production Systems', value: '4+', desc: 'Full-Stack, MERN & AI' },
@@ -67,9 +68,12 @@ export default function About() {
         <div className="about-header opacity-0 flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/10 mb-16">
           <div>
             <p className="font-mono text-xs text-primary-400 uppercase tracking-[0.25em] mb-3">05 / Profile</p>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white">
+            <BounceHeading
+              tag="h2"
+              className="text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white"
+            >
               About &amp; Perspective
-            </h2>
+            </BounceHeading>
           </div>
           <div className="font-mono text-xs text-neutral-500">
             <span>LOCATION: {personal.location.toUpperCase()}</span>
@@ -80,9 +84,12 @@ export default function About() {
         <div className="grid lg:grid-cols-12 gap-12 items-start">
           {/* Left Column: Indented Editorial Narrative */}
           <div className="about-narrative opacity-0 lg:col-span-7 space-y-6">
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white uppercase tracking-tight leading-snug">
+            <BounceHeading
+              tag="h3"
+              className="text-2xl sm:text-3xl md:text-4xl font-bold text-white uppercase tracking-tight leading-snug"
+            >
               Bridging clean code, relational databases, and data-driven insight.
-            </h3>
+            </BounceHeading>
 
             <div className="space-y-4 text-neutral-300 font-light leading-relaxed text-base sm:text-lg">
               <p className="indent-8">

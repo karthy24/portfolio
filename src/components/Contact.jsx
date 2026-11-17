@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { personal } from '../data';
+import BounceHeading from './BounceHeading';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -20,12 +21,12 @@ export default function Contact() {
         {/* Massive Editorial Headline */}
         <div className="pb-16 border-b border-white/10 mb-16">
           <p className="font-mono text-xs text-primary-400 uppercase tracking-[0.25em] mb-4">06 / Connect</p>
-          <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-white leading-[1.05]">
-            Let's build <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-200 via-white to-neutral-500">
-              what's next.
-            </span>
-          </h2>
+          <BounceHeading
+            tag="h2"
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-white leading-[1.05]"
+          >
+            Let's build what's next.
+          </BounceHeading>
         </div>
 
         <div className="grid lg:grid-cols-12 gap-16 items-start">
@@ -83,9 +84,12 @@ export default function Contact() {
 
           {/* Right Column: Clean Form */}
           <div className="lg:col-span-6 p-8 border border-white/10 bg-white/[0.015]">
-            <h3 className="text-xl font-bold uppercase tracking-tight text-white mb-6 font-mono text-sm">
+            <BounceHeading
+              tag="h3"
+              className="text-xl font-bold uppercase tracking-tight text-white mb-6 font-mono text-sm"
+            >
               // SEND DISPATCH
-            </h3>
+            </BounceHeading>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label className="font-mono text-xs text-neutral-400 uppercase tracking-wider block mb-2">
