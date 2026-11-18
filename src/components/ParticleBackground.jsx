@@ -9,8 +9,8 @@ const SETTINGS = {
   bloomStrength: 0.75,
   bloomRadius: 0.08,
   bloomThreshold: 0.21,
-  colorA: '#2dd4bf',
-  colorB: '#34d399',
+  colorA: '#25b8ff',
+  colorB: '#b04dff',
   autorotate: false,
 };
 
@@ -84,7 +84,7 @@ export default function ParticleBackground() {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 w-full h-full -z-10 bg-black overflow-hidden pointer-events-auto"
+      className="absolute inset-0 w-full h-full -z-10 bg-black overflow-hidden pointer-events-auto"
       style={{ touchAction: 'none' }}
     >
       <canvas

@@ -100,7 +100,7 @@ export class ParticleStudio {
       antialias: false,
       powerPreference: "high-performance",
     });
-    this.renderer.setClearColor(0x030d0b, 1);
+    this.renderer.setClearColor(0x000000, 1);
 
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(40, 1, 0.05, 100);
@@ -239,8 +239,8 @@ export class ParticleStudio {
       uniforms: {
         uTime: { value: 0 },
         uScale: { value: 1 },
-        uColor: { value: new THREE.Color("#2dd4bf") },
-        uOpacity: { value: 0.5 },
+        uColor: { value: new THREE.Color("#9a9ab8") },
+        uOpacity: { value: 0.7 },
       },
       vertexShader: /* glsl */ `
         uniform float uTime, uScale;

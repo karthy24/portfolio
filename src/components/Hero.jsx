@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { animate } from 'animejs';
 import { personal } from '../data';
 import BounceHeading from './BounceHeading';
+import ParticleBackground from './ParticleBackground';
 
 const disciplines = [
   'Web Development & Front-End',
@@ -57,6 +58,8 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex flex-col justify-between px-6 sm:px-12 md:px-16 pt-28 pb-12 overflow-hidden border-b border-white/5"
     >
+      {/* 3D GPU Particle Field (Exclusive to Home Section) */}
+      <ParticleBackground />
       {/* Top Header Row of Hero */}
       <div className="hero-header relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pointer-events-none opacity-0">
         {/* Monogram Initial */}
